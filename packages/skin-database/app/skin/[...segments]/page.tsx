@@ -1,4 +1,4 @@
-import App from "../../../../skin-museum-client/src/App";
+import App from "../../App";
 import type { Metadata } from "next";
 import SkinModel from "../../../data/SkinModel";
 import UserContext from "../../../data/UserContext";
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   ];
 
   const title = `${fileName} - Winamp Skin Museum`;
-  const description = readme || DESCRIPTION;
+  const description = readme == null ? DESCRIPTION : readme.slice(0, 300);
   return {
     title,
     description,
@@ -52,5 +52,5 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default function Page() {
-  return <App next={true} />;
+  return <App />;
 }
